@@ -29,10 +29,11 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                ElevatedCardExample(),
+              children: [
+                Image.network('https://raw.githubusercontent.com/PeriNetwork/assetsPeri/49629947f8bdad569632fbdc01461df8c681571c/statistics.svg'),
+                ElevatedCardExample(nameImage: 'assets/images/stats.png', info: "A quantidade de usuários é: ", qtdUsuarios: 20,),
                 SizedBox(height: 10),
-                ElevatedCardExample()
+                ElevatedCardExample(nameImage: 'assets/images/stats.png', info: "A quantidade de usuários é: ", qtdUsuarios: 20,)
               ]),
         ),
       ),
@@ -41,11 +42,15 @@ class MyApp extends StatelessWidget {
 }
 
 class ElevatedCardExample extends StatelessWidget {
-  const ElevatedCardExample({super.key});
+  const ElevatedCardExample({super.key, required this.nameImage, required this.info, required this.qtdUsuarios });
+
+  final String info;
+  final int qtdUsuarios;
+  final String nameImage;
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Card(
         child: SizedBox(
           width: 400,
@@ -56,7 +61,9 @@ class ElevatedCardExample extends StatelessWidget {
                 alignment: Alignment(-0.75, 0),
                 child: Row(
                   children: [
-                    
+                    Image(image: AssetImage(nameImage)),
+                    Text(info),
+                    Text(qtdUsuarios.toString())
                   ],
                 )),
           ),
