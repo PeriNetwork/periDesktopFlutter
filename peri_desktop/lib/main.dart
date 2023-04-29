@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:peri_desktop/nav_bar/nav_bar.dart';
@@ -34,7 +36,22 @@ class MyApp extends StatelessWidget {
         body: Align(
           alignment: Alignment.topCenter,
           child: Column(
-            children: [StatsCard()],
+            children: [
+              StatsCard(
+                  icon: FaIcon(
+                    FontAwesomeIcons.users,
+                    color: Colors.red,
+                  ),
+                  statsInfo: "Comunidades: ",
+                  statsNumber: 22),
+              StatsCard(
+                  icon: FaIcon(
+                    FontAwesomeIcons.userCheck,
+                    color: Colors.red,
+                  ),
+                  statsInfo: "Usuários: ",
+                  statsNumber: 323),
+            ],
           ),
         ),
       ),
