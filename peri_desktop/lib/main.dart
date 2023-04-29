@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:peri_desktop/nav_bar/nav_bar.dart';
+import 'package:peri_desktop/stats_cards/stats_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +27,17 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+        appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(50), child: NavBar()),
+        backgroundColor: Colors.black,
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: Column(
+            children: [StatsCard()],
+          ),
+        ),
+      ),
     );
   }
 }
