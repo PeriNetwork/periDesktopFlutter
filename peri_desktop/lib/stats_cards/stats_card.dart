@@ -1,16 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class StatsCard extends StatelessWidget {
   const StatsCard(
       {super.key,
       required this.icon,
       required this.statsInfo,
-      required this.statsNumber});
+      this.statsNumber = 0});
 
-  final FaIcon icon;
+  final IconData icon;
   final String statsInfo;
   final int statsNumber;
 
@@ -23,21 +22,25 @@ class StatsCard extends StatelessWidget {
           Radius.circular(10),
         ),
       ),
-      width: 0.9 * (MediaQuery.of(context).size.width),
+      width: 0.8 * (MediaQuery.of(context).size.width),
       margin: EdgeInsets.only(top: 20),
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.all(15),
-            child: icon,
-          ),
+              padding: EdgeInsets.all(15),
+              child: Icon(
+                icon,
+                color: Colors.red,
+              )),
           Text(
             statsInfo,
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                color: Colors.white,
+                fontWeight: FontWeight.normal,
+                fontSize: 20),
           ),
           Text(
-            statsNumber.toString(),
+            statsNumber == 0 ? "" : statsNumber.toString(),
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.normal,
