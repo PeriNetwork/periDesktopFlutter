@@ -24,7 +24,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
         child: Column(
           children: [
             StatsCard(
-                icon: Icons.group, statsInfo: "Comunidades: ", statsNumber: 22),
+                icon: Icons.group, statsInfo: "Usuários: ", statsNumber: 22),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -34,7 +34,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 ),
                 StatsCard(
                     icon: Icons.person,
-                    statsInfo: "Comunidade mais seguida: PeriCommunity ",
+                    statsInfo: "Usuario mais seguido: PeriOficial ",
                     statsNumber: 0),
               ],
             ),
@@ -47,12 +47,13 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 ),
                 StatsCard(
                     icon: Icons.person,
-                    statsInfo: "Usuário mais seguido: PeriUser",
-                    statsNumber: 0),
+                    statsInfo: "quantidade seguidores: ", statsNumber: 12545),
               ],
             ),
+            Padding(padding: EdgeInsets.only(right: 80),
+            child: SizedBox(),),
             StatsCard(
-                icon: Icons.person, statsInfo: "Usuários: ", statsNumber: 323),
+                icon: Icons.person, statsInfo: "post-diarios: ", statsNumber: 7323),
           ],
         ),
       ),
