@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../nav_bar/nav_bar.dart';
 import '../stats_cards/stats_card.dart';
@@ -23,6 +24,13 @@ class _StatisticsPageState extends State<StatisticsPage> {
         alignment: Alignment.topCenter,
         child: Column(
           children: [
+            Padding(
+              padding: EdgeInsets.only(top: 30, bottom: 30),
+              child: Image.asset(
+                'assets/images/computerstats.png',
+                width: MediaQuery.of(context).size.width * 0.4,
+              ),
+            ),
             StatsCard(
                 icon: Icons.group, statsInfo: "Usuários: ", statsNumber: 22),
             Row(
@@ -47,13 +55,31 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 ),
                 StatsCard(
                     icon: Icons.person,
-                    statsInfo: "quantidade seguidores: ", statsNumber: 12545),
+                    statsInfo: "Quantidade de posts: ",
+                    statsNumber: 12545),
               ],
             ),
-            Padding(padding: EdgeInsets.only(right: 80),
-            child: SizedBox(),),
+            Padding(
+              padding: EdgeInsets.only(right: 80),
+              child: SizedBox(),
+            ),
             StatsCard(
-                icon: Icons.person, statsInfo: "post-diarios: ", statsNumber: 7323),
+                icon: Icons.post_add,
+                statsInfo: "Número de Posts diários: ",
+                statsNumber: 7323),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(right: 80),
+                  child: SizedBox(),
+                ),
+                StatsCard(
+                    icon: Icons.post_add,
+                    statsInfo: "Post com mais likes: ",
+                    statsNumber: 23145),
+              ],
+            ),
           ],
         ),
       ),
