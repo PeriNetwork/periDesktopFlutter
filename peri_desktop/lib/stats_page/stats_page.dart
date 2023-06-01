@@ -28,7 +28,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
               padding: EdgeInsets.only(top: 30, bottom: 30),
               child: Image.asset(
                 'assets/images/computerstats.png',
-                width: MediaQuery.of(context).size.width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.2,
               ),
             ),
             StatsCard(
