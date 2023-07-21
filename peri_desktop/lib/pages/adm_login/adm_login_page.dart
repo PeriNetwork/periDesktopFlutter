@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:peri_desktop/api/api_service_peri_user.dart';
 
 class AdmLoginPage extends StatefulWidget {
   const AdmLoginPage({super.key});
@@ -12,6 +13,11 @@ class AdmLoginPage extends StatefulWidget {
 // ignore: camel_case_types
 class Adm_LoginPageState extends State<AdmLoginPage> {
   final _formKey = GlobalKey<FormState>();
+  String _email = "";
+  String _password = "";
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +59,19 @@ class Adm_LoginPageState extends State<AdmLoginPage> {
                     padding: EdgeInsets.only(top: 30, bottom: 10),
                     child: SizedBox(
                         child: TextFormField(
+                      controller: emailController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, insira um nome de usuário';
+                          return 'Por favor, insira um Email de usuário';
                         }
+                        _email = emailController.text;
                         return null;
                       },
                       maxLength: 20,
                       style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                           counterText: "",
-                          labelText: "Nome:",
+                          labelText: "Email:",
                           labelStyle: TextStyle(color: Colors.white),
                           focusColor: Colors.white,
                           enabledBorder: OutlineInputBorder(
@@ -84,10 +92,12 @@ class Adm_LoginPageState extends State<AdmLoginPage> {
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: SizedBox(
                         child: TextFormField(
+                      controller: passwordController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Por favor, insira uma senha';
                         }
+                        _password = passwordController.text;
                         return null;
                       },
                       maxLength: 20,
@@ -117,10 +127,30 @@ class Adm_LoginPageState extends State<AdmLoginPage> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(),
                     onPressed: () {
-                      // TODO : BACKEND CADASTRO
+                      // DOING : BACKEND CADASTRO
                       if (_formKey.currentState!.validate()) {
-                        print("login feito com sucesso");
-                        Navigator.pushNamed(context, '/statistics');
+                        // chame o método login do ApiServicePeriUser e se o código retornado for 200 faça o push para a tela /statistics
+                        // caso contrário, mostre um snackbar com a mensagem "Email ou senha incorretos"
+                        if (_email.isEmpty || _password.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Email ou senha incorretos'),
+                            ),
+                          );
+                        } else {
+                          ApiServicePeriUser.login(_email, _password)
+                              .then((value) {
+                            if (value == 200) {
+                              Navigator.pushNamed(context, '/statistics');
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Email ou senha incorretos'),
+                                ),
+                              );
+                            }
+                          });
+                        }
                       }
                     },
                     child: Row(
