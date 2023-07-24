@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_desktop/pages/adm_login/adm_login_page.dart';
-import 'package:peri_desktop/pages/stats_page/stats_page.dart';
+import 'package:peri_desktop/pages/stats_page/post_stats_page.dart';
+import 'package:peri_desktop/pages/stats_page/users_stats_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => AdmLoginPage(),
-        '/statistics': (context) => const StatisticsPage(),
+        '/user_statistics': (context) => const UserStatisticsPage(),
+        '/posts_statistics': (context) => const PostStatisticsPage(),
       },
       debugShowCheckedModeBanner:
           false, // Remove the debug banner in the top right corner

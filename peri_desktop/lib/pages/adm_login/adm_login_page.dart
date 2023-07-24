@@ -62,6 +62,7 @@ class Adm_LoginPageState extends State<AdmLoginPage> {
                       controller: emailController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
+                          emailController.text = "admperi@gmail.com";
                           return 'Por favor, insira um Email de usuário';
                         }
                         _email = emailController.text;
@@ -94,6 +95,7 @@ class Adm_LoginPageState extends State<AdmLoginPage> {
                         child: TextFormField(
                       controller: passwordController,
                       validator: (value) {
+                        passwordController.text = "123";
                         if (value == null || value.isEmpty) {
                           return 'Por favor, insira uma senha';
                         }
@@ -141,7 +143,7 @@ class Adm_LoginPageState extends State<AdmLoginPage> {
                           ApiServicePeriUser.login(_email, _password)
                               .then((value) {
                             if (value == 200) {
-                              Navigator.pushNamed(context, '/statistics');
+                              Navigator.pushNamed(context, '/user_statistics');
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
