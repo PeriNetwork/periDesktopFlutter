@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:peri_desktop/api/api_service_peri_user.dart';
 import 'package:peri_desktop/components/stats_card.dart';
 import 'package:peri_desktop/components/stats_section.dart';
 import '../nav_bar/nav_bar.dart';
@@ -13,6 +14,8 @@ class UserStatisticsPage extends StatefulWidget {
 }
 
 class _UserStatisticsPageState extends State<UserStatisticsPage> {
+  //int qtdUsers = ApiServicePeriUser.getUsersCount();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,10 +46,9 @@ class _UserStatisticsPageState extends State<UserStatisticsPage> {
                 SizedBox(
                   width: 0.8 * (MediaQuery.of(context).size.width),
                   child: Wrap(alignment: WrapAlignment.center, children: [
-                    StatsCard(),
-                    StatsCard(),
-                    StatsCard(),
-                    StatsCard(),
+                    StatsCard(
+                        infoTitle: "Usuários",
+                        info: ApiServicePeriUser.getUsersCount().toString()),
                   ]),
                 )
               ],
