@@ -48,7 +48,7 @@ class _UserStatisticsPageState extends State<UserStatisticsPage> {
                   child: Wrap(alignment: WrapAlignment.center, children: [
                     StatsCard(
                         infoTitle: "Usuários",
-                        info: ApiServicePeriUser.getUsersCount().toString()),
+                        info: ApiServicePeriUser.count()),
                   ]),
                 )
               ],

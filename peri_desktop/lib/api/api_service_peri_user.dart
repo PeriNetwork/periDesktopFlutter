@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'constants/constants.dart';
 import 'package:dio/dio.dart';
 
@@ -26,7 +28,28 @@ class ApiServicePeriUser {
     // count how much ocurrencies in response
     try {
       var response = await dio.get('${ApiConstants.baseURL}user/howmany');
-      return response.toString();
+      return response.data['count'].toString();
+    } on DioException catch (e) {
+      print(e.message);
+      return 400;
+    }
+  }
+
+  static getAll() async {
+    try {
+      var response = await dio.get('${ApiConstants.baseURL}user');
+      print(response.data);
+      return response.data;
+    } on DioException catch (e) {
+      print(e.message);
+      return 400;
+    }
+  }
+
+  static count() async {
+    try {
+      var response = await dio.get('${ApiConstants.baseURL}user/howmany');
+      return response.data.toString();
     } on DioException catch (e) {
       print(e.message);
       return 400;
